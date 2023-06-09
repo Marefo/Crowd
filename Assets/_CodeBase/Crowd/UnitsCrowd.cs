@@ -9,9 +9,10 @@ namespace _CodeBase.Crowd
 {
   public class UnitsCrowd : MonoBehaviour
   {
+    public event Action<int> UnitsAmountChanged;
+    
     public List<Unit> EnabledUnits => _allUnits.Where(unit => unit.Enabled).ToList();
-    public int EnabledUnitsAmount => EnabledUnits.Count;
-    public float CrowdDensity => (float) EnabledUnitsAmount / (float) _maxUnitsAmount;
+    public float CrowdDensity => (float) EnabledUnits.Count / (float) _maxUnitsAmount;
     public float Radius => _radius;
 
     [SerializeField] private int _startUnitsAmount;
@@ -37,6 +38,7 @@ namespace _CodeBase.Crowd
       
       _crowdAnimator.PlayIdle();
       UpdateUnitsPosition();
+      UnitsAmountChanged?.Invoke(EnabledUnits.Count);
     }
 
     private void SpawnUnit(bool enabled = false)
@@ -76,16 +78,19 @@ namespace _CodeBase.Crowd
       
       if(isCertainUnit)
         UpdateUnitsPosition();
+      
+      UnitsAmountChanged?.Invoke(EnabledUnits.Count);
     }
 
     private void AddUnit()
     {
       _disabledUnits.First().Enable();
+      UnitsAmountChanged?.Invoke(EnabledUnits.Count);
     }
 
     private void UpdateUnitsPosition()
     {
-      for (int i = 1; i < EnabledUnitsAmount; i++)
+      for (int i = 1; i < EnabledUnits.Count; i++)
       {
         float x = _distanceBetweenUnits * Mathf.Sqrt(i) * Mathf.Cos(i * _radius);
         float z = _distanceBetweenUnits * Mathf.Sqrt(i) * Mathf.Sin(i * _radius);
