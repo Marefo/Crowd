@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace _CodeBase.UnitCode
 {
@@ -6,7 +7,7 @@ namespace _CodeBase.UnitCode
   {
     public bool Enabled { get; private set; } = true;
     
-    [field: SerializeField] public UnitAnimator Animator { get; private set; }
+    [field: SerializeField] public AnimatedMesh Animator { get; private set; }
     [field: Space(10)]
     [SerializeField] private GameObject _model;
 

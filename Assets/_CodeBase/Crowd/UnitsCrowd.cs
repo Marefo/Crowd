@@ -21,6 +21,7 @@ namespace _CodeBase.Crowd
     [SerializeField] private float _radius;
     [Space(10)]
     [SerializeField] private Transform _unitsParent;
+    [SerializeField] private UnitsCrowdAnimator _crowdAnimator;
     [Space(10)]
     [SerializeField] private Unit _unitPrefab;
 
@@ -34,6 +35,7 @@ namespace _CodeBase.Crowd
       for (int i = 0; i < _maxUnitsAmount; i++) 
         SpawnUnit(i <= _startUnitsAmount - 1);
       
+      _crowdAnimator.PlayIdle();
       UpdateUnitsPosition();
     }
 

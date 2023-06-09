@@ -63,7 +63,7 @@ namespace _CodeBase.Player
       if (_touchedEvenOnce == false)
       {
         _touchedEvenOnce = true;
-        _crowdAnimator.ChangeRunState(true);
+        _crowdAnimator.PlayRun();
       }
 
       Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
