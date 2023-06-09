@@ -1,4 +1,5 @@
 using System;
+using _CodeBase.Crowd;
 using _CodeBase.Infrastructure.Services;
 using _CodeBase.Logging;
 using UnityEngine;
@@ -9,7 +10,9 @@ namespace _CodeBase.Player
   public class PlayerMovement : MonoBehaviour
   {
     [SerializeField] private Vector3 _moveSpeed;
-    [SerializeField] private float _clampXperUnit;
+    [SerializeField] private float _clampXPerUnit;
+    [SerializeField] private UnitsCrowd _crowd;
+    [SerializeField] private UnitsCrowdAnimator _crowdAnimator;
     
     private InputService _inputService;
     private Camera _camera;
@@ -57,8 +60,11 @@ namespace _CodeBase.Player
 
     private void OnTouchEnter()
     {
-      if (_touchedEvenOnce == false) 
+      if (_touchedEvenOnce == false)
+      {
         _touchedEvenOnce = true;
+        _crowdAnimator.ChangeRunState(true);
+      }
 
       Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         
@@ -90,7 +96,7 @@ namespace _CodeBase.Player
         Vector3 touchWorldDelta = currentTouchWorldPosition - _touchStartWorldPosition;
         Vector3 move = _playerPositionOnTouchStart + touchWorldDelta;
 
-        float clampX = _clampXperUnit;
+        float clampX = Mathf.Clamp(_clampXPerUnit - _crowd.CrowdDensity * _crowd.Radius, 0, float.MaxValue);
         move.x = Mathf.Clamp(move.x, -clampX, clampX);
 
         Vector3 targetPosition = transform.position;
