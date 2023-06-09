@@ -7,7 +7,7 @@ namespace _CodeBase.UnitCode
   {
     public bool Enabled { get; private set; } = true;
     
-    [field: SerializeField] public AnimatedMesh Animator { get; private set; }
+    [field: SerializeField] public List<AnimatedMesh> Animators { get; private set; }
     [field: Space(10)]
     [SerializeField] private GameObject _model;
 
