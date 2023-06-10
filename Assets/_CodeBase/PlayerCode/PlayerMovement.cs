@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
 using _CodeBase.Crowd;
 using _CodeBase.Infrastructure.Services;
-using _CodeBase.Logging;
-using _CodeBase.Player.Data;
+using _CodeBase.PlayerCode.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
 using VContainer;
 
-namespace _CodeBase.Player
+namespace _CodeBase.PlayerCode
 {
   public class PlayerMovement : MonoBehaviour
   {

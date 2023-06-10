@@ -8,7 +8,9 @@ namespace _CodeBase.Infrastructure.LifetimeScopes
   {
     protected override void Configure(IContainerBuilder builder)
     {
-      builder.RegisterEntryPoint<InputService>().AsSelf();
+      builder.Register<InputService>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
+      builder.Register<SceneService>(Lifetime.Singleton);
+      builder.Register<GameState>(Lifetime.Singleton);
     }
   }
 }
