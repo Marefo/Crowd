@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerMovementSettings
   m_EditorClassIdentifier: 
   MoveSpeed: {x: 0.25, y: 0, z: 0.035}
-  ClampXPerUnit: 1.35
+  ClampXPerUnit: 1.25
