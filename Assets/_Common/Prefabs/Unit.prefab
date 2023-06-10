@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1192611414}
   - component: {fileID: 1192611413}
   - component: {fileID: 1192611412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545888529718903852}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 5436462256417745026}
   - component: {fileID: 5436462256417745027}
   - component: {fileID: 5436462256417745028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 6197897571939403807}
   - component: {fileID: 5103234317519454284}
   - component: {fileID: 613503098700967404}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

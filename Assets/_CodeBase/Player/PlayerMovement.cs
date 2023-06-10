@@ -1,19 +1,24 @@
 using System;
+using System.Collections;
 using _CodeBase.Crowd;
 using _CodeBase.Infrastructure.Services;
 using _CodeBase.Logging;
+using _CodeBase.Player.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VContainer;
 
 namespace _CodeBase.Player
 {
   public class PlayerMovement : MonoBehaviour
   {
-    [SerializeField] private Vector3 _moveSpeed;
-    [SerializeField] private float _clampXPerUnit;
     [SerializeField] private UnitsCrowd _crowd;
     [SerializeField] private UnitsCrowdAnimator _crowdAnimator;
-    
+    [SerializeField] private UnitsCrowdFighter _crowdFighter;
+    [Space(10)] 
+    [SerializeField] private PlayerMovementSettings _settings;
+
+    private bool _enabled = true;
     private InputService _inputService;
     private Camera _camera;
     private Plane _plane;
@@ -37,7 +42,9 @@ namespace _CodeBase.Player
 
     private void FixedUpdate()
     {
-      if (_touchedEvenOnce)
+      if(_enabled == false) return;
+      
+      if(_touchedEvenOnce)
         MoveByZ();
       
       if(_isTouching)
@@ -50,12 +57,28 @@ namespace _CodeBase.Player
     {
       _inputService.TouchEntered += OnTouchEnter;
       _inputService.TouchCanceled += OnTouchCancel;
+      _crowdFighter.FightStarted += Disable;
+      _crowdFighter.WonFight += Enable;
     }
 
     private void UnSubscribeEvents()
     {
       _inputService.TouchEntered -= OnTouchEnter;
       _inputService.TouchCanceled -= OnTouchCancel;
+      _crowdFighter.FightStarted -= Disable;
+      _crowdFighter.WonFight -= Enable;
+    }
+    
+    public void Enable()
+    {
+      _enabled = true;
+      _crowdAnimator.PlayRun();
+    }
+
+    public void Disable()
+    {
+      _enabled = false;
+      OnTouchCancel();
     }
 
     private void OnTouchEnter()
@@ -82,7 +105,7 @@ namespace _CodeBase.Player
     private void MoveByZ()
     {
       Vector3 targetPosition = transform.position;
-      targetPosition.z += _moveSpeed.z;
+      targetPosition.z += _settings.MoveSpeed.z;
       transform.position = targetPosition;
     }
 
@@ -96,11 +119,11 @@ namespace _CodeBase.Player
         Vector3 touchWorldDelta = currentTouchWorldPosition - _touchStartWorldPosition;
         Vector3 move = _playerPositionOnTouchStart + touchWorldDelta;
 
-        float clampX = Mathf.Clamp(_clampXPerUnit - _crowd.CrowdDensity * _crowd.Radius / 2, 0, float.MaxValue);
+        float clampX = Mathf.Clamp(_settings.ClampXPerUnit - _crowd.CrowdDensity * _crowd.Radius / 2, 0, float.MaxValue);
         move.x = Mathf.Clamp(move.x, -clampX, clampX);
 
         Vector3 targetPosition = transform.position;
-        targetPosition.x = Mathf.Lerp(transform.position.x, move.x, _moveSpeed.x);
+        targetPosition.x = Mathf.Lerp(transform.position.x, move.x, _settings.MoveSpeed.x);
         transform.position = targetPosition;
       }
     }

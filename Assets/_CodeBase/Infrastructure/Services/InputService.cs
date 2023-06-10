@@ -9,7 +9,7 @@ namespace _CodeBase.Infrastructure.Services
   {
     public event Action TouchEntered;
     public event Action TouchCanceled;
-    
+
     public void Tick()
     {
       if (Input.GetMouseButtonDown(0))
@@ -17,5 +17,6 @@ namespace _CodeBase.Infrastructure.Services
       else if (Input.GetMouseButtonUp(0)) 
         TouchCanceled?.Invoke();
     }
+    
   }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2443390976339741183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7151020728655883288}
   - component: {fileID: 7151020728670005690}
   - component: {fileID: 7151020728669373478}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JumpingParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4742,7 +4742,7 @@ GameObject:
   - component: {fileID: 7151020728655930304}
   - component: {fileID: 7151020728669963980}
   - component: {fileID: 7151020728670025976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SubEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9570,7 +9570,7 @@ GameObject:
   - component: {fileID: 7151020728655930858}
   - component: {fileID: 7151020728670088470}
   - component: {fileID: 7151020728670007446}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Steam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14304,7 +14304,7 @@ GameObject:
   - component: {fileID: 7151020728655824090}
   - component: {fileID: 7151020728669994712}
   - component: {fileID: 7151020728669306900}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19095,7 +19095,7 @@ GameObject:
   - component: {fileID: 8986568573191958843}
   - component: {fileID: 8986568573191958841}
   - component: {fileID: 8986568573191958842}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19171,7 +19171,7 @@ GameObject:
   - component: {fileID: 8986568573214958313}
   - component: {fileID: 8986568573214958311}
   - component: {fileID: 8986568573214958312}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19306,7 +19306,7 @@ GameObject:
   - component: {fileID: 8986568573732659220}
   - component: {fileID: 8986568573732659217}
   - component: {fileID: 8986568573732659218}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19390,7 +19390,7 @@ GameObject:
   - component: {fileID: 8986568574406388919}
   - component: {fileID: 8986568574406388917}
   - component: {fileID: 8986568574406388918}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19455,7 +19455,7 @@ GameObject:
   - component: {fileID: 8986568574497078303}
   - component: {fileID: 8986568574497078300}
   - component: {fileID: 8986568574497078301}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19538,7 +19538,7 @@ GameObject:
   - component: {fileID: 8986568574693050754}
   - component: {fileID: 8986568574693050783}
   - component: {fileID: 8986568574693050752}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
