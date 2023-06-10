@@ -7,7 +7,6 @@ namespace _CodeBase.UI.Screens
 {
   public class HintScreen : Screen
   {
-    private GameState _gameState;
     private InputService _inputService;
 
     [Inject]
