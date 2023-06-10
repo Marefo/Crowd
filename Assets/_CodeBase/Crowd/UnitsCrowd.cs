@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _CodeBase.Logging;
 using _CodeBase.UnitCode;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _CodeBase.Crowd
@@ -108,7 +109,9 @@ namespace _CodeBase.Crowd
         float z = _distanceBetweenUnits * Mathf.Sqrt(i) * Mathf.Sin(i * _radius);
             
         Vector3 newUnitPosition = new Vector3(x,0,z);
-        EnabledUnits[i].transform.localPosition = newUnitPosition;
+        Unit unit = EnabledUnits[i];
+        unit.transform.DOKill();
+        unit.transform.DOLocalMove(newUnitPosition, 0.25f).SetEase(Ease.OutBack).SetLink(unit.gameObject);
       }
     }
   }
