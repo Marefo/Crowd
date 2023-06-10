@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555c041fa37ac494087c2ead0fe5b43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationSO: {fileID: 11400000, guid: 3dc886f50e4d8224abfd90ea1b4c6b25, type: 2}
+  AnimationSO: {fileID: 11400000, guid: 10712608e986b2f4591d01bee03ef169, type: 2}
   Tick: 1
   AnimationIndex: 0
   AnimationName: 
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555c041fa37ac494087c2ead0fe5b43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationSO: {fileID: 11400000, guid: 3dc886f50e4d8224abfd90ea1b4c6b25, type: 2}
+  AnimationSO: {fileID: 11400000, guid: 10712608e986b2f4591d01bee03ef169, type: 2}
   Tick: 1
   AnimationIndex: 0
   AnimationName: 

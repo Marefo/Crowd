@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b883dcb85f40490ebb245937ba21c66e, type: 3}
   m_Name: PlayerMovementSettings
   m_EditorClassIdentifier: 
-  MoveSpeed: {x: 0.25, y: 0, z: 0.035}
+  MoveSpeed: {x: 0.3, y: 0, z: 0.035}
+  MaxMovePerTimeX: 0.15
   ClampXPerUnit: 1.25

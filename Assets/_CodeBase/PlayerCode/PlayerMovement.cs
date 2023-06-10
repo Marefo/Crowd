@@ -1,3 +1,4 @@
+using System;
 using _CodeBase.Crowd;
 using _CodeBase.Infrastructure.Services;
 using _CodeBase.PlayerCode.Data;
@@ -27,6 +28,8 @@ namespace _CodeBase.PlayerCode
     {
       _camera = Camera.main;
       _plane = new Plane(Vector3.up, 0);
+
+      Application.targetFrameRate = 60;
     }
 
     [Inject]
@@ -36,15 +39,20 @@ namespace _CodeBase.PlayerCode
       SubscribeEvents();
     }
 
+    private void Update()
+    {
+      if(_enabled == false) return;
+      
+      if(_isTouching)
+        MoveByX();
+    }
+
     private void FixedUpdate()
     {
       if(_enabled == false) return;
       
       if(_touchedEvenOnce)
         MoveByZ();
-      
-      if(_isTouching)
-        MoveByX();
     }
 
     private void OnDestroy() => UnSubscribeEvents();
@@ -107,21 +115,15 @@ namespace _CodeBase.PlayerCode
 
     private void MoveByX()
     {
-      Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+      float moveX = Mathf.Clamp(_inputService.TouchDelta * _settings.MoveSpeed.x * Time.deltaTime, 
+          -_settings.MaxMovePerTimeX, _settings.MaxMovePerTimeX);
+      
+      float clampX = Mathf.Clamp(_settings.ClampXPerUnit - _crowd.CrowdDensity * _crowd.Radius / 2, 0, float.MaxValue);
+      moveX = Mathf.Clamp(transform.position.x + moveX, -clampX, clampX);
 
-      if (_plane.Raycast(ray, out float distance))
-      {
-        Vector3 currentTouchWorldPosition = ray.GetPoint(distance + 1f);
-        Vector3 touchWorldDelta = currentTouchWorldPosition - _touchStartWorldPosition;
-        Vector3 move = _playerPositionOnTouchStart + touchWorldDelta;
-
-        float clampX = Mathf.Clamp(_settings.ClampXPerUnit - _crowd.CrowdDensity * _crowd.Radius / 2, 0, float.MaxValue);
-        move.x = Mathf.Clamp(move.x, -clampX, clampX);
-
-        Vector3 targetPosition = transform.position;
-        targetPosition.x = Mathf.Lerp(transform.position.x, move.x, _settings.MoveSpeed.x);
-        transform.position = targetPosition;
-      }
+      Vector3 targetPosition = transform.position;
+      targetPosition.x = moveX;
+      transform.position = targetPosition;
     }
   }
 }

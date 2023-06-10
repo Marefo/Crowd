@@ -6,6 +6,7 @@ namespace _CodeBase.PlayerCode.Data
   public class PlayerMovementSettings : ScriptableObject
   {
     public Vector3 MoveSpeed;
+    public float MaxMovePerTimeX;
     public float ClampXPerUnit;
   }
 }
