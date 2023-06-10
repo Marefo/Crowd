@@ -173,6 +173,7 @@ MonoBehaviour:
   autoInjectGameObjects:
   - {fileID: 1184962968}
   - {fileID: 1356781000}
+  _moneyData: {fileID: 11400000, guid: d9543932ab90b5b4da95e2af66ef5065, type: 2}
 --- !u!1001 &1184962967
 PrefabInstance:
   m_ObjectHideFlags: 0

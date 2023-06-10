@@ -3,5 +3,6 @@
   public static class SaveKeys
   {
     public const string WasBootstrappedKey = "WasBootstrapped";
+    public const string MoneyAmountKey = "MoneyAmount";
   }
 }

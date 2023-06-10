@@ -41,6 +41,10 @@ namespace _CodeBase.PlayerCode
       _crowdAnimator.PlayDance();
     }
 
-    private void OnUnitsAmountBecomeZero() => _gameState.Lose();
+    private void OnUnitsAmountBecomeZero()
+    {
+      _movement.Disable();
+      _gameState.Lose();
+    }
   }
 }
