@@ -29,7 +29,8 @@ namespace _CodeBase.Crowd
 
     private readonly List<Unit> _allUnits = new List<Unit>();
     private List<Unit> _disabledUnits => _allUnits.Where(unit => unit.Enabled == false).ToList();
-
+    private Tween _updateUnitsPositionTween;
+    
     private void Start() => SpawnUnits();
 
     private void SpawnUnits()
@@ -45,6 +46,7 @@ namespace _CodeBase.Crowd
     private void SpawnUnit(bool enabled = false)
     {
       Unit unit = Instantiate(_unitPrefab, _unitsParent);
+      unit.Initialize(this);
       
       if(enabled == false)
         unit.Disable();
@@ -74,7 +76,6 @@ namespace _CodeBase.Crowd
         HideUnit();
       
       UpdateUnitsPosition();
-      _crowdAnimator.UpdateUnitsAnimation();
     }
 
     public void HideUnit(Unit unit = null)
@@ -88,8 +89,8 @@ namespace _CodeBase.Crowd
 
       if (isCertainUnit)
       {
-        UpdateUnitsPosition();
-        _crowdAnimator.UpdateUnitsAnimation();
+        _updateUnitsPositionTween?.Kill();
+        _updateUnitsPositionTween = DOVirtual.DelayedCall(.3f, UpdateUnitsPosition);
       }
       
       UnitsAmountChanged?.Invoke(EnabledUnits.Count);
@@ -111,7 +112,7 @@ namespace _CodeBase.Crowd
         Vector3 newUnitPosition = new Vector3(x,0,z);
         Unit unit = EnabledUnits[i];
         unit.transform.DOKill();
-        unit.transform.DOLocalMove(newUnitPosition, 0.25f).SetEase(Ease.OutBack).SetLink(unit.gameObject);
+        unit.transform.DOLocalMove(newUnitPosition, 0.8f).SetEase(Ease.OutBack).SetLink(unit.gameObject);
       }
     }
   }

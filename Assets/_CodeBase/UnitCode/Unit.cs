@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _CodeBase.Crowd;
 using UnityEngine;
 
 namespace _CodeBase.UnitCode
@@ -9,17 +10,23 @@ namespace _CodeBase.UnitCode
     
     [field: SerializeField] public List<AnimatedMesh> Animators { get; private set; }
     [field: Space(10)]
-    [SerializeField] private GameObject _model;
+    [SerializeField] private GameObject _visual;
+
+    private UnitsCrowd _unitsCrowd;
+    
+    public void Initialize(UnitsCrowd unitsCrowd) => _unitsCrowd = unitsCrowd;
+
+    public UnitsCrowd GetCrowd() => _unitsCrowd;
 
     public void Enable()
     {
-      _model.SetActive(true);
+      _visual.SetActive(true);
       Enabled = true;
     }
 
     public void Disable()
     {
-      _model.SetActive(false);
+      _visual.SetActive(false);
       Enabled = false;
     }
   }
