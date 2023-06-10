@@ -51,12 +51,20 @@ namespace _CodeBase.Crowd
       _allUnits.Add(unit);
     }
 
+    public void Multiply(int multiplier)
+    {
+      int targetAmount = EnabledUnits.Count * multiplier;
+      int difference = targetAmount - EnabledUnits.Count;
+      AddUnits(difference);
+    }
+    
     public void AddUnits(int amount)
     {
       for (int i = 0; i < amount; i++) 
         AddUnit();
       
       UpdateUnitsPosition();
+      _crowdAnimator.UpdateUnitsAnimation();
     }
 
     public void HideUnits(int amount)
@@ -65,6 +73,7 @@ namespace _CodeBase.Crowd
         HideUnit();
       
       UpdateUnitsPosition();
+      _crowdAnimator.UpdateUnitsAnimation();
     }
 
     public void HideUnit(Unit unit = null)
@@ -75,9 +84,12 @@ namespace _CodeBase.Crowd
         unit = EnabledUnits.Last();
       
       unit.Disable();
-      
-      if(isCertainUnit)
+
+      if (isCertainUnit)
+      {
         UpdateUnitsPosition();
+        _crowdAnimator.UpdateUnitsAnimation();
+      }
       
       UnitsAmountChanged?.Invoke(EnabledUnits.Count);
     }

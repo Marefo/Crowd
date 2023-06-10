@@ -96,7 +96,7 @@ namespace _CodeBase.Player
         Vector3 touchWorldDelta = currentTouchWorldPosition - _touchStartWorldPosition;
         Vector3 move = _playerPositionOnTouchStart + touchWorldDelta;
 
-        float clampX = Mathf.Clamp(_clampXPerUnit - _crowd.CrowdDensity * _crowd.Radius, 0, float.MaxValue);
+        float clampX = Mathf.Clamp(_clampXPerUnit - _crowd.CrowdDensity * _crowd.Radius / 2, 0, float.MaxValue);
         move.x = Mathf.Clamp(move.x, -clampX, clampX);
 
         Vector3 targetPosition = transform.position;
