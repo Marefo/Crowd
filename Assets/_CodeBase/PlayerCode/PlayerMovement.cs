@@ -21,15 +21,11 @@ namespace _CodeBase.PlayerCode
     private Plane _plane;
     private bool _isTouching;
     private bool _touchedEvenOnce;
-    private Vector3 _touchStartWorldPosition;
-    private Vector3 _playerPositionOnTouchStart;
 
     private void Awake()
     {
       _camera = Camera.main;
       _plane = new Plane(Vector3.up, 0);
-
-      Application.targetFrameRate = 60;
     }
 
     [Inject]
@@ -43,16 +39,10 @@ namespace _CodeBase.PlayerCode
     {
       if(_enabled == false) return;
       
-      if(_isTouching)
-        MoveByX();
-    }
-
-    private void FixedUpdate()
-    {
-      if(_enabled == false) return;
-      
       if(_touchedEvenOnce)
         MoveByZ();
+      if(_isTouching)
+        MoveByX();
     }
 
     private void OnDestroy() => UnSubscribeEvents();
@@ -92,15 +82,7 @@ namespace _CodeBase.PlayerCode
         _touchedEvenOnce = true;
         _crowdAnimator.PlayRun();
       }
-
-      Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        
-      if (_plane.Raycast(ray,out float distance))
-      {
-        _touchStartWorldPosition = ray.GetPoint(distance + 1f);
-        _playerPositionOnTouchStart = transform.position;
-      }
-
+      
       _isTouching = true;
     }
 
@@ -109,7 +91,7 @@ namespace _CodeBase.PlayerCode
     private void MoveByZ()
     {
       Vector3 targetPosition = transform.position;
-      targetPosition.z += _settings.MoveSpeed.z;
+      targetPosition.z += _settings.MoveSpeed.z * Time.deltaTime;
       transform.position = targetPosition;
     }
 

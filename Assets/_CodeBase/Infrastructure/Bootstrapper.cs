@@ -41,6 +41,7 @@ namespace _CodeBase.Infrastructure
     {
       if (gameObject.scene.name == BootstrapSceneName)
       {
+        Application.targetFrameRate = 60;
         MarkAsBootstrapped();
         _indestructibleObjects.ForEach(DontDestroyOnLoad);
         _sceneService.LoadNextScene();

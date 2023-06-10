@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555c041fa37ac494087c2ead0fe5b43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationSO: {fileID: 11400000, guid: 10712608e986b2f4591d01bee03ef169, type: 2}
+  AnimationSO: {fileID: 11400000, guid: 4df4ef3e0bff1d143b9d39897da1c1c4, type: 2}
   Tick: 1
   AnimationIndex: 0
   AnimationName: 
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555c041fa37ac494087c2ead0fe5b43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimationSO: {fileID: 11400000, guid: 10712608e986b2f4591d01bee03ef169, type: 2}
+  AnimationSO: {fileID: 11400000, guid: 4df4ef3e0bff1d143b9d39897da1c1c4, type: 2}
   Tick: 1
   AnimationIndex: 0
   AnimationName: 
@@ -243,7 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6197897571939403807}
   - component: {fileID: 5103234317519454284}
-  - component: {fileID: 613503098700967404}
+  - component: {fileID: 1064706717199332530}
   m_Layer: 6
   m_Name: Unit
   m_TagString: Untagged
@@ -283,8 +283,8 @@ MonoBehaviour:
   - {fileID: 5436462256417745026}
   - {fileID: 1192611414}
   _visual: {fileID: 4952886296531625342}
---- !u!136 &613503098700967404
-CapsuleCollider:
+--- !u!135 &1064706717199332530
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -293,7 +293,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.08
-  m_Height: 0.4
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 0.15
   m_Center: {x: 0, y: 0.2, z: 0}

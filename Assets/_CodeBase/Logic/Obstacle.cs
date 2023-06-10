@@ -9,7 +9,7 @@ namespace _CodeBase.Logic
     private void OnTriggerEnter(Collider other)
     {
       if (other.TryGetComponent(out Unit unit) == false) return;
-      unit.GetCrowd().HideUnit(unit);
+      unit.GetCrowd().HideUnit(true, unit);
     }
   }
 }
