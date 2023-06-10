@@ -6,6 +6,7 @@ using _CodeBase.Logging;
 using _CodeBase.Logic;
 using _CodeBase.UnitCode;
 using DG.Tweening;
+using NaughtyAttributes.Test;
 using UnityEngine;
 
 namespace _CodeBase.Crowd
@@ -60,7 +61,7 @@ namespace _CodeBase.Crowd
     private void StartFight(UnitsCrowdFighter enemyCrowd)
     {
       _unitsAmountAfterFight = Mathf.Clamp(UnitsAmount - enemyCrowd.UnitsAmount, 0, int.MaxValue);
-
+      
       if(_enemyCrowd != null)
         _enemyCrowd.LostFight -= WinFight;
       
@@ -89,10 +90,11 @@ namespace _CodeBase.Crowd
       
       while (_crowd.EnabledUnits.Count > _unitsAmountAfterFight)
       {
-        if(_enemyCrowd.UnitsAmount == 0) yield break;
-        
-        RotateUnitsToEnemyCrowd();
-        MoveAllyUnitToEnemy();
+        if (_enemyCrowd.UnitsAmount > 0)
+        {
+          RotateUnitsToEnemyCrowd();
+          MoveAllyUnitToEnemy();
+        }
 
         if (time >= _settings.UnitKillTime)
         {

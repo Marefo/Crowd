@@ -90,7 +90,7 @@ MonoBehaviour:
   _unitsParent: {fileID: 2101026025230938452}
   _crowdAnimator: {fileID: 2101026024025980736}
   _crowdCollider: {fileID: 2101026025885116796}
-  _settings: {fileID: 11400000, guid: 777d021e4122eec42901e7b89befe9a6, type: 2}
+  _settings: {fileID: 11400000, guid: 22ea0cf33b9b05e4a9eec37bb4cb2603, type: 2}
 --- !u!114 &2101026024025980736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101026024965788445}
-  m_LocalRotation: {x: 0.29350597, y: -0.000000040290587, z: 0.000000012370351, w: 0.9559573}
+  m_LocalRotation: {x: 0.29350597, y: 2.4724519e-16, z: -1.1680876e-15, w: 0.9559573}
   m_LocalPosition: {x: 0, y: 2.6, z: -3.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -373,7 +373,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101026025384069683}
-  m_LocalRotation: {x: 0.29350597, y: -0.000000040290587, z: 0.000000012370351, w: 0.9559573}
+  m_LocalRotation: {x: 0.29350597, y: 2.4724519e-16, z: -1.1680876e-15, w: 0.9559573}
   m_LocalPosition: {x: 0, y: 2.6, z: -3.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

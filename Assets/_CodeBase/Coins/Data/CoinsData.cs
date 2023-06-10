@@ -25,8 +25,9 @@ namespace _CodeBase.Coins.Data
 
     private void Load()
     {
-      if(PlayerPrefs.HasKey(SaveKeys.MoneyAmountKey)) return;
+      if(PlayerPrefs.HasKey(SaveKeys.MoneyAmountKey) == false) return;
       Amount = PlayerPrefs.GetInt(SaveKeys.MoneyAmountKey);
+      AmountChanged?.Invoke(Amount);
     }
   }
 }

@@ -12,6 +12,7 @@ namespace _CodeBase.Infrastructure
 {
   public class Bootstrapper : MonoBehaviour
   {
+    [SerializeField] private string _loadLevel;
     [SerializeField] private List<GameObject> _indestructibleObjects;
     
     private const string BootstrapSceneName = "Bootstrap";
@@ -44,10 +45,16 @@ namespace _CodeBase.Infrastructure
         Application.targetFrameRate = 60;
         MarkAsBootstrapped();
         _indestructibleObjects.ForEach(DontDestroyOnLoad);
-        _sceneService.LoadNextScene();
+        string loadLevel = GetSavedLevel();
+        _sceneService.LoadScene(loadLevel);
       }
-      else if (IsBootstrapped() == false) 
-        SceneManager.LoadScene(BootstrapSceneName);
+      else
+      {
+        if (IsBootstrapped() == false) 
+          SceneManager.LoadScene(BootstrapSceneName);
+        else
+          SaveLevel();
+      } 
     }
 
     private bool IsBootstrapped()
@@ -62,5 +69,16 @@ namespace _CodeBase.Infrastructure
 
     private void MarkAsBootstrapped() => PlayerPrefs.SetInt(SaveKeys.WasBootstrappedKey, 1);
     private void MarkAsUnBootstrapped() => PlayerPrefs.SetInt(SaveKeys.WasBootstrappedKey, 0);
+
+    private void SaveLevel() => PlayerPrefs.SetString(SaveKeys.LevelKey, gameObject.scene.name);
+    private string GetSavedLevel()
+    {
+      string level = _loadLevel;
+      
+      if(PlayerPrefs.HasKey(SaveKeys.LevelKey))
+        level = PlayerPrefs.GetString(SaveKeys.LevelKey, gameObject.scene.name);
+
+      return level;
+    }
   }
 }

@@ -10,7 +10,10 @@ namespace _CodeBase.Coins
     
     private void OnTriggerEnter(Collider obj)
     {
-      if(obj.TryGetComponent(out Player player) == false) return;
+      if(obj.TryGetComponent(out Player player) == false && obj.transform.parent.TryGetComponent(out Player playerFromChild) == false)
+      {
+        return;
+      }
       _data.Add();
       Destroy(gameObject);
     }
